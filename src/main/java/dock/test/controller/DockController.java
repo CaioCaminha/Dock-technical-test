@@ -16,8 +16,8 @@ public class DockController {
     private DockService dockService;
 
     @PostMapping(consumes = MediaType.TEXT_HTML_VALUE)
-    public ResponseEntity<DockDto> createDock(@RequestBody(required = true) String body){
-        return null;
+    public ResponseEntity createDock(@RequestBody String dock){
+        return dockService.createDock(dock);
     }
 
     @PutMapping("/{logic}")

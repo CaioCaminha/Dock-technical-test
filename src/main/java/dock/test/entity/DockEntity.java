@@ -1,5 +1,6 @@
 package dock.test.entity;
 
+import dock.test.dto.DockDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,9 +21,23 @@ public class DockEntity {
     private String serial;
     private String model;
     private Integer sam;
-    private Integer ptid;
+    private String ptid;
     private Integer plat;
     private String version;
     private Integer mxr;
+    private Integer mxf;
     private String PVERFM;
+
+    public DockEntity(DockDto dockDto){
+        this.logic = dockDto.getLogic();
+        this.serial = dockDto.getSerial();
+        this.model = dockDto.getModel();
+        this.sam = dockDto.getSam();
+        this.ptid = dockDto.getPtid();
+        this.plat = dockDto.getPlat();
+        this.version = dockDto.getVersion();
+        this.mxr = dockDto.getMxr();
+        this.mxf = dockDto.getMxf();
+        this.PVERFM = dockDto.getPVERFM();
+    }
 }
