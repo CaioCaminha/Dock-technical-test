@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "v1/dock", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/v1/dock", produces = MediaType.APPLICATION_JSON_VALUE)
 public class DockController {
 
     @Autowired
@@ -29,6 +29,7 @@ public class DockController {
     public ResponseEntity<DockDto> getDock(@PathVariable("logic") Integer logic){
         return null;
     }
+
 
 
 }
