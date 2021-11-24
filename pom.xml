@@ -11,7 +11,7 @@
 	<groupId>dock.test</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1</version>
-	<name>Application</name>
+	<name>dock-application</name>
 	<description>technical test</description>
 	<properties>
 		<java.version>17</java.version>
