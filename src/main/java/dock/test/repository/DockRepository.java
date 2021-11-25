@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface DockRepository extends JpaRepository<DockEntity, Integer> {
 
     Optional<DockEntity> findByLogic(Integer logic);
+
+
 }

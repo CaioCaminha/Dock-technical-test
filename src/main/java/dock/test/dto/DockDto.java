@@ -15,7 +15,6 @@ import javax.validation.constraints.NotEmpty;
 public class DockDto {
 
     @NonNull
-    @NotEmpty
     private Integer logic;
     @NonNull
     @NotEmpty

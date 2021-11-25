@@ -4,8 +4,12 @@ package dock.test.service.impl;
 import dock.test.dto.DockDto;
 import dock.test.entity.DockEntity;
 import dock.test.repository.DockRepository;
+import dock.test.response.ResponseService;
 import dock.test.service.DockService;
+import dock.test.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -18,15 +22,18 @@ public class DockServiceImpl implements DockService {
     @Autowired
     private DockRepository dockRepository;
 
+    @Autowired
+    private ResponseService response;
+
 
     @Override
     public ResponseEntity createDock(String dock) {
         try{
             DockDto dockDto = DockDto.generateDto(dock);
             DockEntity dockEntity = this.dockRepository.save(new DockEntity(dockDto));
-            return ResponseEntity.created(new URI(dockEntity.getLogic().toString())).body(dockDto);
+            return response.success(dockDto, HttpStatus.CREATED);
         }catch (Exception e){
-            return ResponseEntity.badRequest().body("erro ao cadastrar entidade");
+            return response.error("Erro ao cadastrar entidade", e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -35,26 +42,49 @@ public class DockServiceImpl implements DockService {
         try{
             Optional<DockEntity> optionalDockEntity = this.dockRepository.findById(logic);
             if(optionalDockEntity.isPresent()){
-                return ResponseEntity.ok(new DockDto(optionalDockEntity.get()));
+                return response.success(optionalDockEntity.get(), HttpStatus.OK);
             }else{
-                return ResponseEntity.badRequest().body("Erro ao buscar entidade");
+                return response.error("Erro ao buscar entidade", "logic: " + logic, HttpStatus.BAD_REQUEST);
             }
         }catch (Exception e){
-            return ResponseEntity.internalServerError().body("Erro ao buscar entidade");
+            return response.error("Erro ao buscar entidade", e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @Override
-    public ResponseEntity<DockDto> updateDock(Integer logic) {
+    public ResponseEntity getAllDocks(Pageable pageable) {
+        try{
+            return response.success(this.dockRepository.findAll(pageable), HttpStatus.OK);
+        }catch (Exception e){
+            return response.error("Não foi possível buscar entidades", e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @Override
+    public ResponseEntity updateDock(Integer logic, DockDto dockDto) {
         try{
             Optional<DockEntity> optionalDockEntity = this.dockRepository.findById(logic);
             if(optionalDockEntity.isPresent()){
-                DockEntity dockEntity = optionalDockEntity.get();
-                return null;
+                DockEntity dockEntity = this.update(dockDto, optionalDockEntity.get());
+                return response.success(this.dockRepository.save(dockEntity), HttpStatus.OK);
             }
+            return response.error("Não foi possível atualizar entidade", "Entidade não localizada | logic: " + logic, HttpStatus.BAD_REQUEST);
         }catch (Exception e){
-            return null;
+            return response.error("Não foi possível atualizar a entidade", e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return null;
     }
+
+    private DockEntity update(DockDto dockDto, DockEntity dockEntity){
+            dockEntity.setSerial(dockDto.getSerial());
+            dockEntity.setModel(dockDto.getModel());
+            dockEntity.setSam(dockDto.getSam());
+            dockEntity.setPtid(dockDto.getPtid());
+            dockEntity.setPlat(dockDto.getPlat());
+            dockEntity.setVersion(dockDto.getVersion());
+            dockEntity.setMxr(dockDto.getMxr());
+            dockEntity.setMxf(dockDto.getMxf());
+            dockEntity.setPVERFM(dockDto.getPVERFM());
+            return dockEntity;
+    }
+
 }
