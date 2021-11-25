@@ -27,7 +27,7 @@ public class DockController {
 
     @GetMapping("/{logic}")
     public ResponseEntity<DockDto> getDock(@PathVariable("logic") Integer logic){
-        return null;
+        return this.dockService.getDock(logic);
     }
 
 

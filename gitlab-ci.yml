@@ -1,0 +1,37 @@
+image: docker:stable
+
+stages:
+  - build
+  - package
+  - test
+  - deploy
+
+services:
+  - docker:dind
+  - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
+
+before_script:
+  - docker info
+
+
+maven-build:
+  services:
+    - maven:3-jdk-17
+  stage: build
+  script: "mvn clean package"
+  arctifacts:
+    paths:
+      - target/*.jar
+
+
+docker-build:
+  services:
+    - docker:dind
+    - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
+  before_script:
+    - docker info
+  stage: package
+  script:
+    - docker build -t dock-test .
+    - docker tag dock-test caiocaminha/dock-test:latest
+    - docker push caiocaminha/dock-test:latest

@@ -15,8 +15,6 @@ import javax.persistence.*;
 public class DockEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     private Integer logic;
     private String serial;
     private String model;

@@ -1,5 +1,6 @@
 package dock.test.dto;
 
+import dock.test.entity.DockEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,6 +35,19 @@ public class DockDto {
     private String PVERFM;
 
 
+    public DockDto(DockEntity dock){
+        this.logic = dock.getLogic();
+        this.serial = dock.getSerial();
+        this.model = dock.getModel();
+        this.sam = dock.getSam();
+        this.ptid = dock.getPtid();
+        this.plat = dock.getPlat();
+        this.version = dock.getVersion();
+        this.mxr = dock.getMxr();
+        this.mxf = dock.getMxf();
+        this.PVERFM = dock.getPVERFM();
+    }
+
     public static DockDto generateDto(String dock) {
         String[] properties = dock.split(";");
         return new DockDto(Integer.parseInt(properties[0]),
@@ -46,6 +60,5 @@ public class DockDto {
                 Integer.parseInt(properties[7]),
                 Integer.parseInt(properties[8]),
                 properties[9]);
-
     }
 }
