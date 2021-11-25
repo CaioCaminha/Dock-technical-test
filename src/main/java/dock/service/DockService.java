@@ -1,6 +1,6 @@
-package dock.test.service;
+package dock.service;
 
-import dock.test.dto.DockDto;
+import dock.dto.DockDto;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 

@@ -1,6 +1,6 @@
-package dock.test.dto;
+package dock.dto;
 
-import dock.test.entity.DockEntity;
+import dock.entity.DockEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

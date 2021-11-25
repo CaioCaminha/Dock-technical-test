@@ -1,4 +1,4 @@
-package dock.test.repository.query;
+package dock.repository.query;
 
 public class DockQuery {
 

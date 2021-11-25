@@ -1,4 +1,4 @@
-package dock.test.util;
+package dock.util;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

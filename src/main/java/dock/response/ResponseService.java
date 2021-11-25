@@ -1,4 +1,4 @@
-package dock.test.response;
+package dock.response;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

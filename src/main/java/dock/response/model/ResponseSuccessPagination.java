@@ -1,4 +1,4 @@
-package dock.test.response.model;
+package dock.response.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

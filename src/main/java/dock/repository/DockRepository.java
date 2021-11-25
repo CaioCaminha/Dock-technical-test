@@ -1,6 +1,6 @@
-package dock.test.repository;
+package dock.repository;
 
-import dock.test.entity.DockEntity;
+import dock.entity.DockEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

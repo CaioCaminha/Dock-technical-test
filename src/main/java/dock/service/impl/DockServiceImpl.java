@@ -1,19 +1,17 @@
-package dock.test.service.impl;
+package dock.service.impl;
 
 
-import dock.test.dto.DockDto;
-import dock.test.entity.DockEntity;
-import dock.test.repository.DockRepository;
-import dock.test.response.ResponseService;
-import dock.test.service.DockService;
-import dock.test.util.Util;
+import dock.service.DockService;
+import dock.dto.DockDto;
+import dock.entity.DockEntity;
+import dock.repository.DockRepository;
+import dock.response.ResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.net.URI;
 import java.util.Optional;
 
 @Service

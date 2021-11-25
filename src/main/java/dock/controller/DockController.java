@@ -1,8 +1,8 @@
-package dock.test.controller;
+package dock.controller;
 
 
-import dock.test.dto.DockDto;
-import dock.test.service.DockService;
+import dock.dto.DockDto;
+import dock.service.DockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

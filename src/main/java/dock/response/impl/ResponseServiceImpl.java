@@ -1,6 +1,7 @@
-package dock.test.response.impl;
+package dock.response.impl;
 
-import dock.test.response.ResponseService;
+import dock.response.ResponseService;
+import dock.response.model.*;
 import dock.test.response.model.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
