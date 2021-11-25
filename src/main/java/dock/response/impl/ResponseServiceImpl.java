@@ -2,7 +2,7 @@ package dock.response.impl;
 
 import dock.response.ResponseService;
 import dock.response.model.*;
-import dock.test.response.model.*;
+import dock.response.model.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;

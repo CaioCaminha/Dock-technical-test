@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "title": "Terminal",
+  "type": "object",
+  "properties": {
+    "logic": {
+      "type": "integer"
+    },
+    "serial": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "sam": {
+      "type": "integer"
+    },
+    "ptid": {
+      "type": "string"
+    },
+    "plat": {
+      "type": "integer"
+    },
+    "version": {
+      "type": "string"
+    },
+    "mxr": {
+      "type": "integer"
+    },
+    "PVERFM": {
+      "type": "string"
+    }
+  },
+  "required": ["logic", "serial", "model", "version"]
+}

@@ -1,6 +1,7 @@
 package dock.service.impl;
 
 
+import dock.json.JsonSchemaValidator;
 import dock.service.DockService;
 import dock.dto.DockDto;
 import dock.entity.DockEntity;
@@ -23,15 +24,22 @@ public class DockServiceImpl implements DockService {
     @Autowired
     private ResponseService response;
 
+    @Autowired
+    private JsonSchemaValidator jsonSchemaValidator;
+
 
     @Override
     public ResponseEntity createDock(String dock) {
         try{
             DockDto dockDto = DockDto.generateDto(dock);
-            DockEntity dockEntity = this.dockRepository.save(new DockEntity(dockDto));
-            return response.success(dockDto, HttpStatus.CREATED);
+            if(this.jsonSchemaValidator.isJsonValid(dockDto)){
+                DockEntity dockEntity = this.dockRepository.save(new DockEntity(dockDto));
+                return response.success(dockDto, HttpStatus.CREATED);
+            }else{
+                return response.error("Erro ao cadastrar entidade", "Json não segue estrutura exigida", HttpStatus.BAD_REQUEST);
+            }
         }catch (Exception e){
-            return response.error("Erro ao cadastrar entidade", e.getMessage(), HttpStatus.BAD_REQUEST);
+            return response.error("Erro ao cadastrar entidade", e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -61,12 +69,15 @@ public class DockServiceImpl implements DockService {
     @Override
     public ResponseEntity updateDock(Integer logic, DockDto dockDto) {
         try{
-            Optional<DockEntity> optionalDockEntity = this.dockRepository.findById(logic);
-            if(optionalDockEntity.isPresent()){
-                DockEntity dockEntity = this.update(dockDto, optionalDockEntity.get());
-                return response.success(this.dockRepository.save(dockEntity), HttpStatus.OK);
+            if(this.jsonSchemaValidator.isJsonValid(dockDto)){
+                Optional<DockEntity> optionalDockEntity = this.dockRepository.findById(logic);
+                if(optionalDockEntity.isPresent()){
+                    DockEntity dockEntity = this.update(dockDto, optionalDockEntity.get());
+                    return response.success(this.dockRepository.save(dockEntity), HttpStatus.OK);
+                }
+                return response.error("Não foi possível atualizar entidade", "Entidade não localizada | logic: " + logic, HttpStatus.BAD_REQUEST);
             }
-            return response.error("Não foi possível atualizar entidade", "Entidade não localizada | logic: " + logic, HttpStatus.BAD_REQUEST);
+            return response.error("Não foi possível atualizar entidade", "Json não segue estrutura exigida", HttpStatus.BAD_REQUEST);
         }catch (Exception e){
             return response.error("Não foi possível atualizar a entidade", e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
