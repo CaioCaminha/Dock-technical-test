@@ -11,5 +11,4 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     Optional<Product> findByLogic(Integer logic);
 
-
 }

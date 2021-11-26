@@ -27,8 +27,8 @@ public class ProductController {
     }
 
     @PutMapping(value = "/{logic}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ProductDto> updateDock(@PathVariable("logic") Integer logic,
-                                                 @RequestBody ProductDto productDto){
+    public ResponseEntity<ProductDto> updateProduct(@PathVariable("logic") Integer logic,
+                                                    @RequestBody ProductDto productDto){
         return this.productService.updateProduct(logic, productDto);
     }
 
