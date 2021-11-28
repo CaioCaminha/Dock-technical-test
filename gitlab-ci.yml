@@ -32,6 +32,6 @@ docker-build:
     - docker info
   stage: package
   script:
-    - docker build -t dock-test .
-    - docker tag dock-test caiocaminha/dock-test:latest
-    - docker push caiocaminha/dock-test:latest
+    - docker build -t dock-product-api .
+    - docker tag dock-test caiocaminha/dock-product-api:latest
+    - docker push caiocaminha/dock-product-api:latest
