@@ -22,8 +22,8 @@ public class ProductController {
 
 
     @PostMapping(consumes = "text/html;charset=utf-8")
-    public ResponseEntity createProduct(@RequestBody String dock){
-        return productService.createProduct(dock);
+    public ResponseEntity createProduct(@RequestBody String product){
+        return productService.createProduct(product);
     }
 
     @PutMapping(value = "/{logic}", consumes = MediaType.APPLICATION_JSON_VALUE)
