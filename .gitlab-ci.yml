@@ -14,7 +14,7 @@ services:
 maven-build:
   image: maven:3-jdk-8
   stage: build
-  script: "mvn package -B"
+  script: "mvn clean package"
   artifacts:
     paths:
       - target/*.jar
@@ -23,15 +23,11 @@ maven-build:
 
 
 docker-build:
-  services:
-    - docker:dind
-    - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
-  before_script:
-    - docker info
   stage: package
   script:
     - docker build -t dock-product-api .
     - docker tag dock-product-api caiocaminha/dock-product-api:latest
+    - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
     - docker push caiocaminha/dock-product-api:latest
   dependencies:
     - maven-build
