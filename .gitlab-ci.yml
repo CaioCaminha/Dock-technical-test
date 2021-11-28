@@ -19,9 +19,6 @@ maven-build:
     - maven:3-jdk-17
   stage: build
   script: "mvn clean package"
-  arctifacts:
-    paths:
-      - target/*.jar
 
 
 docker-build:
