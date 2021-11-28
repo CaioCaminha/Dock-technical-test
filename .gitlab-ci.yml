@@ -16,7 +16,7 @@ before_script:
 
 maven-build:
   services:
-    - maven:3-jdk-17
+    - maven:3.8.4-openjdk-17
   stage: build
   script: "mvn clean package"
 
