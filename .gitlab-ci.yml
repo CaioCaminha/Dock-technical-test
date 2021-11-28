@@ -33,3 +33,5 @@ docker-build:
     - docker build -t dock-product-api .
     - docker tag dock-test caiocaminha/dock-product-api:latest
     - docker push caiocaminha/dock-product-api:latest
+  dependencies:
+    - maven-build
