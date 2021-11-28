@@ -17,5 +17,3 @@ application-test:
   stage: test
   script:
     - mvn test
-  dependencies:
-    - docker-build
