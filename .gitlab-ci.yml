@@ -28,6 +28,6 @@ docker-build:
     - docker build -t dock-product-api .
     - docker tag dock-product-api caiocaminha/dock-product-api:latest
     - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
-    - docker push caiocaminha/dock-product-api:latest
+    - docker push caiocaminha/dock-product-api
   dependencies:
     - maven-build
