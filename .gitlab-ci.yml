@@ -11,23 +11,11 @@ services:
   - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
 
 
-maven-build:
-  image: maven:3-jdk-8
-  stage: build
-  script: "mvn clean package"
-  artifacts:
-    paths:
-      - target/*.jar
 
 
-
-
-docker-build:
-  stage: package
+application-test:
+  stage: test
   script:
-    - docker build -t dock-product-api .
-    - docker tag dock-product-api caminhacaio/dock-product-api:latest
-    - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
-    - docker push caminhacaio/dock-product-api
+    - mvn test
   dependencies:
-    - maven-build
+    - docker-build
