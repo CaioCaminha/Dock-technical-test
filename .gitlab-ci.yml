@@ -23,4 +23,4 @@ application-deploy:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
   script:
-    - ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-224-232-53.compute-1.amazonaws.com "sudo su; docker pull caminhacaio/dock-product-api:latest; docker rm $(docker ps -a -q); docker run -d -p 8085:8085 caminhacaio/dock-product-api"
+    - ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-224-232-53.compute-1.amazonaws.com "sudo docker pull caminhacaio/dock-product-api:latest; sudo docker rm $(docker ps -a -q); sudo docker run -d -p 8085:8085 caminhacaio/dock-product-api"
