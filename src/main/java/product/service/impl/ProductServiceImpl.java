@@ -63,15 +63,6 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ResponseEntity getAllProducts(Pageable pageable) {
-        try{
-            return response.success(this.productRepository.findAll(pageable), HttpStatus.OK);
-        }catch (Exception e){
-            return response.error(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    @Override
     public ResponseEntity updateProduct(Integer logic, ProductDto productDto) {
         try{
             List validations = this.jsonSchemaValidator.validateJson(productDto);

@@ -37,12 +37,6 @@ public class ProductController {
         return this.productService.getProduct(logic);
     }
 
-    @GetMapping
-    public ResponseEntity<ProductDto> getAllProducts(@PageableDefault(sort = "logic",
-                                                            direction = Sort.Direction.ASC,
-                                                            page = 0, size = 10) Pageable pageable){
-        return this.productService.getAllProducts(pageable);
-    }
 
 
 

@@ -11,7 +11,5 @@ public interface ProductService {
 
     public ResponseEntity getProduct(Integer logic);
 
-    public ResponseEntity getAllProducts(Pageable pageable);
-
     public ResponseEntity updateProduct(Integer logic, ProductDto productDto);
 }
