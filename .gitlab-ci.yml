@@ -11,8 +11,6 @@ services:
   - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
 
 
-
-
 application-deploy:
   image: ubuntu:latest
   stage: deploy
