@@ -67,3 +67,8 @@ Importar o projeto como Maven na IDE de sua preferência (ex.: IntelliJ, Eclipse
   "status": "Bad Request",\
   "message": "Product not found"\
   }
+  
+## Especificações
+
+A aplicação utiliza o banco de dados em memórioa **H2**, e possuí sistema de CI/CD com GitLab no qual é feito o deploy em uma EC2 na AWS!
+**baseUrl** : http://54.224.232.53:8085/v1/product/
