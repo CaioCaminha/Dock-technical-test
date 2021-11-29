@@ -18,7 +18,7 @@ application-deploy:
   stage: deploy
   script:
     - apt-get update
-    - chmod 400 ./dock-product-api.pem
+    - chmod 400 dock-product-api.pem
     - ssh -i "dock-product-api.pem" ubuntu@ec2-18-205-115-165.compute-1.amazonaws.com
     - sudo su
     - docker pull caminhacaio/dock-product-api:latest
