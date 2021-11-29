@@ -19,7 +19,8 @@ application-deploy:
     - chmod 400 dock-product-api.pem
     - apt-get install openssh-server -y
     - service ssh start
-    - ssh -tt -i dock-product-api.pem ubuntu@ec2-54-172-15-71.compute-1.amazonaws.com
+    - ssh -i -o StrictHostKeyChecking=no "dock-product-api.pem" ubuntu@ec2-54-172-15-71.compute-1.amazonaws.com
+    - sudo su
     - docker pull caminhacaio/dock-product-api:latest
     - docker rm $(docker ps -a -q)
     - docker run -d -p 8085:8085 caminhacaio/dock-product-api
