@@ -78,17 +78,6 @@ public class ProductControllerTest {
         assertInstanceOf(ProductDto.class, responseEntity.getBody());
     }
 
-    @Test
-    public void getAllProjects() throws Exception {
-
-        ProductController productController = new ProductController(this.productService);
-
-        when(this.productService.getAllProducts(any())).thenReturn(ResponseEntity.ok().build());
-
-        ResponseEntity responseEntity = productController.getAllProducts(Pageable.ofSize(10));
-
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-    }
 
 
 }

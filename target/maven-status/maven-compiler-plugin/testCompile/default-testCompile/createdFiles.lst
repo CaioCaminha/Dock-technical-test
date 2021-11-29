@@ -1,5 +1,0 @@
-product\controller\ProductControllerTest.class
-product\service\ProductServiceTest.class
-product\ProductApplicationTests.class
-product\repository\ProductRepositoryTest.class
-product\json\JsonSchemaValidatorTest.class

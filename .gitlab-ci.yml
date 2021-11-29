@@ -10,9 +10,6 @@ services:
   - docker:dind
   - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
 
-
-
-
 maven-build:
   image: maven:3-jdk-8
   stage: build
@@ -20,9 +17,6 @@ maven-build:
   artifacts:
     paths:
       - target/*.jar
-
-
-
 
 docker-build:
   stage: package
@@ -40,8 +34,6 @@ application-test:
   stage: test
   script:
     - mvn test
-
-
 
 application-deploy:
   image: ubuntu:latest
