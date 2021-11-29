@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping(value = "/v1/dock", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/v1/product", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProductController {
 
     private final ProductService productService;
