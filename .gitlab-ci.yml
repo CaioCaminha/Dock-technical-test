@@ -18,6 +18,7 @@ application-deploy:
     - apt-get update
     - apt-get install openssh-server -y
     - service ssh start
+    - eval $(ssh-agent -s)
     - echo "$DOCK_PRODUCT_API" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
