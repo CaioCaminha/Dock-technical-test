@@ -19,6 +19,7 @@ application-deploy:
     - chmod 400 dock-product-api.pem
     - apt-get install openssh-server -y
     - service ssh start
+    - ssh-keyscan ec2-54-224-232-53.compute-1.amazonaws.com
     - ssh-keygen -f "/home/ubuntu/.ssh/known_hosts" -R
     - ssh -i "dock-product-api.pem" ubuntu@ec2-54-224-232-53.compute-1.amazonaws.com
     - sudo su
