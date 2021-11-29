@@ -6,7 +6,7 @@ Projeto referente ao desafio técnico para a vaga Software Engineer 1.\
 A aplicação permite o gerenciamento de produtos de acordo com as especificações ditas na
 descrição do desafio.
 
-###Versões utilizadas no projeto:
+### Versões utilizadas no projeto:
 * Java >= 8 - [JDK](https://www.oracle.com/java/technologies/javase-downloads.html)
 * Spring Boot - [2.6.0](https://docs.spring.io/spring-boot/docs/2.6.0.RELEASE/reference/htmlsingle/)
 * Maven - [4.0.0](https://maven.apache.org/docs/4.0.0/release-notes.html)
@@ -66,4 +66,4 @@ Importar o projeto como Maven na IDE de sua preferência (ex.: IntelliJ, Eclipse
   "code": 400,\
   "status": "Bad Request",\
   "message": "Product not found"\
-  }\
+  }
