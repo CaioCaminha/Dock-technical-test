@@ -1,7 +1,7 @@
 # Instruções
 
 ### Product API
-Projeto referente ao desafio técnico para a vaga Software Engineer 1.\
+Projeto referente ao desafio técnico para a vaga Software Engineer 1.
 
 A aplicação permite o gerenciamento de produtos de acordo com as especificações ditas na
 descrição do desafio.
